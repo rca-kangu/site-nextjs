@@ -4,7 +4,7 @@ import axios from 'axios'
 export async function getServerSideProps() {
   const res = await axios.get('https://www.kangu.com.br/')
   return {
-     props: { site: res.data}, revalidate: 7200 
+     props: { site: res.data, revalidate: 7200 }
   }
 }
 
