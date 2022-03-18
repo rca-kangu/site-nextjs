@@ -1,10 +1,15 @@
-import { Button } from "ui";
+import axios from 'axios'
 
-export default function Web() {
+export async function getServerSideProps() {
+  const res = await axios.get('https://www.kangu.com.br/')
+  return {
+     props: { site: res.data }
+  }
+}
+
+export default function Home(props) {
   return (
-    <div>
-      <h1>Web</h1>
-      <Button />
-    </div>
-  );
+      <div dangerouslySetInnerHTML={{ __html: props.site }} />
+  )
+  
 }
